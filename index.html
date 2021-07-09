@@ -4,9 +4,61 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Math Add</title>
+    <style type="text/css">
+      body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        text-align: center;
+        font-size: 8rem;
+      }
+
+      .question {
+        margin: 32px 0;
+      }
+
+      #next {
+        padding: 32px;
+      }
+    </style>
   </head>
   <body>
-    Hello World
+    <div class="question">
+      <span id="lhs"></span>
+      <span>+</span>
+      <span id="rhs"></span>
+      <span>=</span>
+      <span id="ans"></span>
+    </div>
+    <div class="action">
+      <div id="next">Next</div>
+    </div>
   </body>
+  <script type="text/javascript">
+    function randomInt(max) {
+      return Math.floor(Math.random() * max);
+    }
+
+    (function () {
+      let lblLhs = document.getElementById("lhs");
+      let lblRhs = document.getElementById("rhs");
+      let lblAns = document.getElementById("ans");
+      let btnNext = document.getElementById("next");
+
+      function draw() {
+        let lhs = randomInt(11);
+        let rhs = randomInt(11);
+        let ans = lhs + rhs;
+
+        lblLhs.innerHTML = `${parseInt(lhs)}`;
+        lblRhs.innerHTML = `${parseInt(rhs)}`;
+        lblAns.innerHTML = `${parseInt(ans)}`;
+      }
+
+      btnNext.addEventListener("click", () => {
+        draw();
+      });
+
+      draw();
+    })();
+  </script>
 </html>
